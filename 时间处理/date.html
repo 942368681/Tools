@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="date_now_EN"></div>
+    <br/>
+    <div id="date_now_CN"></div>
+    <br/>
+    <div id="date_ago_EN"></div>
+    <br/>
+    <div id="date_ago_CN"></div>
+    <br/>
+    <div id="timestamp_EN"></div>
+    <br/>
+    <div id="timestamp_CN"></div>
+</body>
+<script src="./timeago.min.js"></script>
+<script>
+    /* 基本用法 */
+    date_now_EN.innerHTML = timeago().format(new Date());
+    date_now_CN.innerHTML = timeago().format(new Date(), 'zh_CN');
+    date_ago_EN.innerHTML = timeago().format('2016-06-12');
+    date_ago_CN.innerHTML = timeago().format('2016-06-12', 'zh_CN');
+    timestamp_EN.innerHTML = timeago().format(1473245023718);
+    timestamp_CN.innerHTML = timeago().format(1473245023718, 'zh_CN');
+
+    /* 设置相对日期 */
+    var timeago = timeago('2016-06-10 12:12:12'); // 在这里设置相对时间
+    console.log(timeago.format('2016-06-12', 'zh_CN'));
+
+    /* 格式化时间戳 */
+    /* var timeago = timeago('2016-06-10 12:12:12');
+    console.log(timeago.format(new Date().getTime() - 11 * 1000 * 60 * 60)); */
+
+</script>
+
+</html>

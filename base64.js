@@ -101,6 +101,7 @@ function Base64() {
         return string;
     }
 }
+// 用法
 var str = '888888';
 var base = new Base64();
 var result = base.encode(str);
