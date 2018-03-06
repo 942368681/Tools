@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #box{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -50px;
+            margin-top: -50px;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <img id="image" src="" alt="" />
+    </div>
+</body>
+<script src="./jquery-3.2.1.min.js"></script>
+<script>
+    /* 实现类似朋友圈缩略图的效果 */
+    /* 方法 */
+    function thumbOnload(ev) {
+        var ev = ev || window.event;
+        var oImg = ev.target;
+        var w = oImg.width;
+        var h = oImg.height;
+        var parentW = $(oImg).parent().width();
+        var parentH = $(oImg).parent().height();
+        var move;
+        if (w >= h) {
+            $(oImg).css('height', parentH);
+            var actuallyW = parseFloat($(oImg).css('width'));
+            move = -(actuallyW - parentW) / 2 + "px";
+            $(oImg).css("transform", "translate(" + move + ",0)");
+        } else {
+            $(oImg).css('width', parentW);
+            var actuallyH = parseFloat($(oImg).css('height'));
+            move = -(actuallyH - parentH) / 2 + "px";
+            $(oImg).css("transform", "translate(0," + move + ")");
+        }
+    };
+    /* 用法 */
+    image.addEventListener('load',thumbOnload);
+    image.src = "./timg.jpg";
+</script>
+
+</html>
